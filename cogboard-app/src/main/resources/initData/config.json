@@ -8,9 +8,8 @@
         "title": "Welcome to Cogboard",
         "columns": 8,
         "theme": "default",
-        "widgets": [
-          "widget1"
-        ]
+        "type": "WidgetBoard",
+        "widgets": ["widget1"]
       },
       "board2": {
         "autoSwitch": true,
@@ -19,32 +18,21 @@
         "title": "Jenkins Job Widget Examples",
         "columns": 6,
         "theme": "default",
-        "widgets": [
-          "widget2",
-          "widget3",
-          "widget4"
-        ]
+        "type": "WidgetBoard",
+        "widgets": ["widget2", "widget3", "widget4"]
       },
       "board3": {
         "autoSwitch": true,
         "switchInterval": 60,
         "id": "board3",
         "theme": "default",
-        "widgets": [
-          "widget8",
-          "widget5",
-          "widget7",
-          "widget6"
-        ],
+        "type": "WidgetBoard",
+        "widgets": ["widget8", "widget5", "widget7", "widget6"],
         "columns": 8,
         "title": "Sonarqube Widget Examples"
       }
     },
-    "allBoards": [
-      "board1",
-      "board2",
-      "board3"
-    ]
+    "allBoards": ["board1", "board2", "board3"]
   },
   "widgets": {
     "widgetsById": {
