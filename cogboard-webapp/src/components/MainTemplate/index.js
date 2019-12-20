@@ -39,7 +39,6 @@ const MainTemplate = () => {
   const dispatch = useDispatch();
   const theme = useTheme();
 
-  console.log('type', currentBoardType);
   const handleSaveDataClick = () => {
     dispatch(saveData());
   };
