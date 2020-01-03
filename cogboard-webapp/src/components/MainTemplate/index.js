@@ -23,8 +23,7 @@ import {
   StyledDrawerContainer,
   StyledLogo,
   StyledMain,
-  StyledSaveFab,
-  StyledSettingsMenu
+  StyledSaveFab
 } from './styled';
 
 const MainTemplate = () => {
@@ -75,7 +74,6 @@ const MainTemplate = () => {
           <AddBoard />
           <StyledBoardList />
         </StyledDrawerContainer>
-        <StyledSettingsMenu />
       </StyledDrawer>
       <StyledMain>
         <Container maxWidth="xl">

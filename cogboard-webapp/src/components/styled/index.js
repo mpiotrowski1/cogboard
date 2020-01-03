@@ -1,9 +1,17 @@
 import React from 'react';
 import styled from '@emotion/styled/macro';
+import { COLORS } from '../../constants';
 
-import { Button, FormControl, Typography, IconButton } from '@material-ui/core';
+import {
+  Button,
+  FormControl,
+  Typography,
+  IconButton,
+  Tabs
+} from '@material-ui/core';
 import IframeEmbed from '../IframeEmbed';
 import { getColor, getSize } from '../../utils/components';
+import TabPanel from '../TabPanel';
 
 const StyledTypography = styled(Typography)`
   margin-bottom: 5px;
@@ -19,12 +27,11 @@ export const WidgetButton = styled(FullWidthButtonOutlined)`
 
 export const WidgetIconButton = styled(IconButton)`
   border-radius: 0;
-  height: 100%;
-  left: 0;
   padding: 0;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  align-items: center;
   width: 100%;
 `;
 
@@ -34,6 +41,11 @@ export const Caption = props => (
 
 export const CaptionWithPointer = styled(Caption)`
   cursor: pointer;
+  text-align: center;
+  &:hover {
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 5px;
+  }
 `;
 
 export const StyledFieldset = styled(FormControl)`
@@ -82,7 +94,15 @@ export const StyledFormControl = styled(FormControl)`
 `;
 
 export const StyledPopoverText = styled(Typography)`
-  background: #fff;
-  color: #000;
+  background: ${COLORS.WHITE};
+  color: ${COLORS.BLACK};
   padding: 1rem;
+`;
+
+export const StyledTabs = styled(Tabs)`
+  margin-bottom: 12px;
+`;
+
+export const StyledTabPanel = styled(TabPanel)`
+  margin-bottom: 12px;
 `;

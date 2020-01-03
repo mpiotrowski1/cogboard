@@ -1,4 +1,4 @@
-import DefaultWidget from './types/DefaultWidget';
+import WhiteSpaceWidget from './types/WhiteSpaceWidget';
 import ExampleWidget from './types/ExampleWidget';
 import JenkinsJobWidget from './types/JenkinsJobWidget';
 import SonarQubeWidget from './types/SonarQubeWidget';
@@ -10,11 +10,12 @@ import WorldClockWidget from './types/WorldClockWidget';
 import CheckboxWidget from './types/CheckboxWidget';
 import AemHealthcheckWidget from './types/AemHealthcheckWidget';
 import IframeEmbedWidget from './types/IframeEmbedWidget';
+import AemBundleInfoWidget from './types/AemBundleInfoWidget';
 
 const widgetTypes = {
-  DefaultWidget: {
-    name: 'Default',
-    component: DefaultWidget
+  WhiteSpaceWidget: {
+    name: 'White Space',
+    component: WhiteSpaceWidget
   },
   ExampleWidget: {
     name: 'Example',
@@ -43,10 +44,11 @@ const widgetTypes = {
     name: 'SonarQube',
     component: SonarQubeWidget,
     dialogFields: [
+      'SonarQubeVersion',
       'EndpointField',
       'SchedulePeriod',
       'Key',
-      'IdNumber',
+      'SonarQubeIdNumber',
       'SonarQubeMetricsInput',
       'ExpandableContent'
     ],
@@ -125,7 +127,7 @@ const widgetTypes = {
   IframeEmbedWidget: {
     name: 'Iframe Embed',
     component: IframeEmbedWidget,
-    dialogFields: ['IFrameURL', 'ExpandableContent']
+    dialogFields: ['IFrameURL']
   },
   CheckboxWidget: {
     name: 'Checkbox',
@@ -145,6 +147,22 @@ const widgetTypes = {
     validationConstraints: {
       SchedulePeriod: { min: 3 },
       AemHealthcheckInput: { minArrayLength: 1 }
+    }
+  },
+  AemBundleInfoWidget: {
+    name: 'AEM Bundle Info',
+    component: AemBundleInfoWidget,
+    dialogFields: [
+      'EndpointField',
+      'SchedulePeriod',
+      'AemBundleResolvedThreshold',
+      'AemBundleInstalledThreshold',
+      'AemBundleExcluded',
+      'ExpandableContent'
+    ],
+    showUpdateTime: true,
+    validationConstraints: {
+      SchedulePeriod: { min: 3 }
     }
   }
 };

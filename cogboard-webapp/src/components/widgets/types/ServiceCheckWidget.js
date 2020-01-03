@@ -1,16 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { string, number } from 'prop-types';
 
-import { Popover } from '@material-ui/core';
 import OpenInNewIcon from '@material-ui/icons/OpenInNew';
-import {
-  Caption,
-  CaptionWithPointer,
-  WidgetButton,
-  StyledPopoverText
-} from '../../styled';
+import { Caption, WidgetButton } from '../../styled';
 import Loader from '../../Loader';
 import styled from '@emotion/styled/macro';
+import { PopoverWithControls } from '../../PopoverWithControls';
 
 const StyledOpenInNewIcon = styled(OpenInNewIcon)`
   font-size: 20px;
@@ -18,17 +13,14 @@ const StyledOpenInNewIcon = styled(OpenInNewIcon)`
   opacity: 0.5;
 `;
 
-const ServiceCheckWidget = props => {
-  const {
-    statusCode,
-    statusMessage,
-    expectedStatusCode,
-    body,
-    expectedResponseBody,
-    url
-  } = props;
-  const [anchorEl, setAnchorEl] = useState(null);
-
+const ServiceCheckWidget = ({
+  body,
+  expectedResponseBody,
+  expectedStatusCode,
+  statusCode,
+  statusMessage,
+  url
+}) => {
   const errorStatus = expectedStatusCode !== statusCode;
   const statusCodeMessage = errorStatus
     ? `${expectedStatusCode} expected, got ${statusCode}`
@@ -39,42 +31,22 @@ const ServiceCheckWidget = props => {
     ? 'MATCH'
     : 'NO MATCH';
 
-  const handleClick = event => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handlePopoverClose = () => {
-    setAnchorEl(null);
-  };
-  const popoverOpen = Boolean(anchorEl);
-
   return (
     <>
       {errorStatus && <Caption>{statusMessage}</Caption>}
-      <Caption>
-        <WidgetButton href={url}>
-          {!statusCode ? (
-            <Loader text="Pending update" size={20} />
-          ) : (
-            statusCodeMessage
-          )}
-          <StyledOpenInNewIcon />
-        </WidgetButton>
-      </Caption>
-      <CaptionWithPointer title={body} onClick={handleClick}>
-        Response: {bodyMessage}
-      </CaptionWithPointer>
-      <Popover
-        open={popoverOpen}
-        onClose={handlePopoverClose}
-        anchorEl={anchorEl}
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'left'
-        }}
-      >
-        <StyledPopoverText>{body}</StyledPopoverText>
-      </Popover>
+      <PopoverWithControls
+        title={`Response: ${bodyMessage}`}
+        body={body}
+        withCopy={true}
+      />
+      <WidgetButton href={url}>
+        {!statusCode ? (
+          <Loader text="Pending update" size={20} />
+        ) : (
+          statusCodeMessage
+        )}
+        <StyledOpenInNewIcon />
+      </WidgetButton>
     </>
   );
 };
