@@ -293,7 +293,11 @@ const dialogFields = {
     validator: () => string()
   },
   DateFormat: {
-    component: DisplayValueSelect,
+    component: conditionallyHidden(
+      DisplayValueSelect,
+      'displayDate',
+      value => value
+    ),
     name: 'dateFormat',
     label: 'Date Format',
     dropdownItems: DATE_FORMATS,
@@ -301,7 +305,11 @@ const dialogFields = {
     validator: () => string()
   },
   TimeFormat: {
-    component: DisplayValueSelect,
+    component: conditionallyHidden(
+      DisplayValueSelect,
+      'displayTime',
+      value => value
+    ),
     name: 'timeFormat',
     label: 'Time Format',
     dropdownItems: TIME_FORMATS,
